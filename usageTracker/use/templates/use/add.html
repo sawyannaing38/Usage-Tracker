@@ -1,0 +1,25 @@
+{% extends "use/layout.html" %}
+
+{% block title %}
+    Add Usage
+{% endblock %}
+
+{% block main %}
+    <div class="container text-dark">
+        <form action="{% url 'add' %}" method="post">
+            {% csrf_token %}
+            <div class="form-floating my-3">
+                <input class="form-control" type="text" name="cause" id="cause" autocomplete="off" placeholder="Cause" required>
+                <label for="cause">Cause</label>
+            </div>
+            <div class="form-floating my-3">
+                <input class="form-control" type="number" name="cost" id="cost" autocomplete="off" placeholder="Cost" required>
+                <label for="cost">Cost</label>
+            </div>
+            <input type="submit" class="btn btn-primary my-3" value="Add Usage">
+        </form>
+        {% if message %}
+            <p class="alert alert-danger">{{message}}</p>
+        {% endif %}
+    </div>
+{% endblock %}

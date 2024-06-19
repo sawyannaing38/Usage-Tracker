@@ -1,0 +1,29 @@
+{% extends "use/layout.html" %}
+
+{% block title %}
+    Register 
+{% endblock %}
+
+{% block main %}
+    <div class="container text-dark">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-floating my-3">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" autocomplete="off" required value="{{username}}">
+                <label for="username">Username</label>
+            </div>
+            <div class="form-floating my-3">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="form-floating my-3">
+                <input type="password" class="form-control" name="confirmation" id="confirmation" placeholder="Confirmation" autocomplete="off" required>
+                <label for="confirmation">Confirm Password</label>
+            </div>
+            <input type="submit" class="btn btn-primary my-3" value="Register">
+        </form>
+        {% if message %}
+            {{message}}
+        {% endif %}
+    </div>
+{% endblock %}
